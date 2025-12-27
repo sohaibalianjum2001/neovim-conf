@@ -262,6 +262,18 @@ The configuration is optimized for performance with:
 - Configurable checker for plugin updates
 - Efficient plugin defaults
 
+## 🤖 Copilot Chat
+
+This configuration includes [copilot.lua](https://github.com/zbirenbaum/copilot.lua) and [copilot-chat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim) for AI-powered code assistance.
+
+### Usage
+
+- **Open Copilot Chat**: `<leader>ccq` (quick chat)
+- **Toggle Chat Panel**: `<leader>cct`
+- **Code Actions**: Copilot suggestions available in insert mode
+
+See [lua/plugins/copilot.lua](lua/plugins/copilot.lua) for configuration.
+
 ## 🐛 Troubleshooting
 
 ### Plugins Not Loading
