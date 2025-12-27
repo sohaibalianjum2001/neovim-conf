@@ -116,6 +116,9 @@ return {
         "vue",
         "svelte",
       })
+      -- Enable treesitter-based indentation
+      opts.indent = opts.indent or {}
+      opts.indent.enable = true
     end,
   },
 

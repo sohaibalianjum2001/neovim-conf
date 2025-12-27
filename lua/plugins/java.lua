@@ -106,6 +106,9 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "java",
       })
+      -- Enable treesitter-based indentation
+      opts.indent = opts.indent or {}
+      opts.indent.enable = true
     end,
   },
 

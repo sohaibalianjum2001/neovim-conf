@@ -111,6 +111,15 @@ return {
         desc = "Find Folders in Documents",
       },
       {
+        "<leader>fw",
+        function()
+          require("telescope.builtin").live_grep({
+            styles = { "ivy" },
+          })
+        end,
+        desc = "Find Words (Live Grep)",
+      },
+      {
         "<leader>fp",
         function()
           require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
@@ -138,6 +147,11 @@ return {
           prompt = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
           results = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
           preview = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
+        },
+      },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
       },
     },

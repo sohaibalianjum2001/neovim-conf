@@ -9,11 +9,12 @@ return {
     },
     config = function()
       require("go").setup({
-        disable_defaults = false,
+        disable_defaults = true, -- Disable default keybindings to avoid conflicts
         go = "go",
         goimports = "gopls",
         fillstruct = "gopls",
-        gofmt = "gopls",
+        -- use golines so max_line_len takes effect
+        gofmt = "golines",
         max_line_len = 120,
         tag_transform = false,
         test_dir = "",
@@ -22,6 +23,24 @@ return {
         lsp_gofumpt = true,
         lsp_on_attach = true,
         dap_debug = true,
+      })
+      
+      -- Set custom Go keybindings that don't conflict with Telescope
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "go",
+        callback = function()
+          local opts = { buffer = true }
+          -- Go-specific commands (using <leader>g prefix for Go)
+          vim.keymap.set("n", "<leader>gf", "<cmd>GoFillStruct<cr>", vim.tbl_extend("force", opts, { desc = "Go Fill Struct" }))
+          vim.keymap.set("n", "<leader>gi", "<cmd>GoIfErr<cr>", vim.tbl_extend("force", opts, { desc = "Go If Err" }))
+          vim.keymap.set("n", "<leader>gt", "<cmd>GoTest<cr>", vim.tbl_extend("force", opts, { desc = "Go Test" }))
+          vim.keymap.set("n", "<leader>gT", "<cmd>GoTestFunc<cr>", vim.tbl_extend("force", opts, { desc = "Go Test Function" }))
+          vim.keymap.set("n", "<leader>gr", "<cmd>GoRun<cr>", vim.tbl_extend("force", opts, { desc = "Go Run" }))
+          vim.keymap.set("n", "<leader>gb", "<cmd>GoBuild<cr>", vim.tbl_extend("force", opts, { desc = "Go Build" }))
+          vim.keymap.set("n", "<leader>gd", "<cmd>GoDoc<cr>", vim.tbl_extend("force", opts, { desc = "Go Doc" }))
+          vim.keymap.set("n", "<leader>ga", "<cmd>GoAlt<cr>", vim.tbl_extend("force", opts, { desc = "Go Alternate (test/impl)" }))
+          vim.keymap.set("n", "<leader>gc", "<cmd>GoCoverage<cr>", vim.tbl_extend("force", opts, { desc = "Go Coverage" }))
+        end,
       })
     end,
     event = { "CmdlineEnter" },
@@ -68,7 +87,8 @@ return {
               completeUnimported = true,
               staticcheck = true,
               directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-              semanticTokens = true,
+              -- Disable semantic tokens; let treesitter/colorscheme handle colors
+              semanticTokens = false,
             },
           },
         },
@@ -105,6 +125,9 @@ return {
         "gowork",
         "gosum",
       })
+      -- Enable treesitter-based indentation
+      opts.indent = opts.indent or {}
+      opts.indent.enable = true
     end,
   },
 
@@ -117,6 +140,7 @@ return {
         "gopls",
         "goimports",
         "gofumpt",
+        "golines",
         "gomodifytags",
         "impl",
         "delve",

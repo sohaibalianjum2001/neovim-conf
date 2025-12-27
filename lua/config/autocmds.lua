@@ -54,8 +54,16 @@ local theme_state = vim.fn.stdpath("data") .. "/last_colorscheme.txt"
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function(ev)
     pcall(vim.fn.writefile, { ev.match }, theme_state)
+    -- Ensure termguicolors is always on for proper color display
+    vim.opt.termguicolors = true
+    -- Force treesitter highlight refresh after colorscheme loads
+    vim.defer_fn(function()
+      if vim.fn.exists(":TSEnable") > 0 then
+        vim.cmd("TSEnable highlight")
+      end
+    end, 100)
   end,
-  desc = "Persist last colorscheme",
+  desc = "Persist last colorscheme and refresh treesitter",
 })
 
 -- On dashboard/landing buffers, map `p` to global project search (home dir)
@@ -75,4 +83,99 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "On landing page: `p` opens project search over all folders",
 })
 
+-- Go-specific indentation settings (Go uses tabs, not spaces)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go", "gomod", "gowork", "gosum" },
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end,
+  desc = "Go indentation settings (tabs)",
+})
+
+-- Python indentation settings (4 spaces per PEP 8)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end,
+  desc = "Python indentation settings (4 spaces)",
+})
+
+-- JavaScript/TypeScript indentation settings (2 spaces is common)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end,
+  desc = "JS/TS indentation settings (2 spaces)",
+})
+
+-- HTML/CSS indentation settings (2 spaces)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "html", "css", "scss", "sass", "less" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end,
+  desc = "HTML/CSS indentation settings (2 spaces)",
+})
+
+-- Java indentation settings (4 spaces)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "java" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end,
+  desc = "Java indentation settings (4 spaces)",
+})
+
+-- Shell/Bash indentation settings (2 spaces)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "sh", "bash", "zsh", "fish" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end,
+  desc = "Shell indentation settings (2 spaces)",
+})
+
+-- YAML/Docker/Config files (2 spaces)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "yaml", "yml", "dockerfile", "toml", "json", "jsonc" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end,
+  desc = "Config files indentation settings (2 spaces)",
+})
+
+-- Makefile indentation (tabs required)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "make", "cmake" },
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 0
+  end,
+  desc = "Makefile indentation settings (tabs)",
+})
 
