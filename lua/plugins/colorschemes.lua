@@ -1,7 +1,7 @@
 return {
   {
     "ydkulks/cursor-dark.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("cursor-dark").setup({
@@ -42,14 +42,17 @@ return {
           ----------------------------------------------------------------------
           -- Syntax
           ----------------------------------------------------------------------
+          vim.api.nvim_set_hl(0, "Comment", { fg = colors.gray, italic = true })
+          vim.api.nvim_set_hl(0, "@comment", { fg = colors.gray, italic = true })
+
           vim.api.nvim_set_hl(0, "String", { fg = colors.green })
           vim.api.nvim_set_hl(0, "@string", { fg = colors.green })
 
           vim.api.nvim_set_hl(0, "Function", { fg = colors.yellow })
           vim.api.nvim_set_hl(0, "@function", { fg = colors.yellow })
 
-          vim.api.nvim_set_hl(0, "Keyword", { fg = colors.purple })
-          vim.api.nvim_set_hl(0, "@keyword", { fg = colors.purple })
+          vim.api.nvim_set_hl(0, "Keyword", { fg = colors.purple, italic = true })
+          vim.api.nvim_set_hl(0, "@keyword", { fg = colors.purple, italic = true })
 
           vim.api.nvim_set_hl(0, "Type", { fg = colors.cyan })
           vim.api.nvim_set_hl(0, "@type", { fg = colors.cyan })
@@ -107,9 +110,13 @@ return {
     priority = 1000,
     opts = {
       style = "night",
-      transparent = true,
+      transparent = false,
       terminal_colors = true,
       styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
         sidebars = "transparent",
         floats = "transparent",
       },
@@ -117,33 +124,62 @@ return {
   },
 
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = true,
+    "sainnhe/gruvbox-material",
+    lazy = false,
     priority = 1000,
     config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        inverse = true,
-        contrast = "hard",
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = true,
-      })
+      vim.o.termguicolors = true
+      vim.o.background = "dark"
+
+      -- Base gruvbox (minimal)
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_foreground = "original"
+
+      -- Reduce visual noise
+      vim.g.gruvbox_material_ui_contrast = "high"
+      vim.g.gruvbox_material_enable_italic = true
+      vim.g.gruvbox_material_enable_bold = true
+      vim.g.gruvbox_material_statusline_style = "default"
+
+      vim.cmd("highlight clear")
+      vim.cmd("syntax reset")
+      vim.cmd.colorscheme("gruvbox-material")
+
+      ----------------------------------------------------------------
+      -- Slab Gruvbox overrides (THIS is the magic)
+      ----------------------------------------------------------------
+      local set = vim.api.nvim_set_hl
+
+      -- Warm whites / text
+      set(0, "Normal", { fg = "#E5D5B1", bg = "#1D2021" })
+      set(0, "Identifier", { fg = "#E5D5B1" })
+      set(0, "Function", { fg = "#E5D5B1", bold = true })
+
+      -- Keywords & control flow → red
+      set(0, "Keyword", { fg = "#FB4934" })
+      set(0, "Conditional", { fg = "#FB4934" })
+      set(0, "Repeat", { fg = "#FB4934" })
+
+      -- Types & structs → off-white (NOT yellow/green)
+      set(0, "Type", { fg = "#E5D5B1" })
+      set(0, "Structure", { fg = "#E5D5B1" })
+
+      -- Strings → muted warm (not bright yellow)
+      set(0, "String", { fg = "#D5A657" })
+
+      -- Numbers / constants → subtle
+      set(0, "Number", { fg = "#D3869B" })
+      set(0, "Constant", { fg = "#D3869B" })
+
+      -- Comments → low contrast
+      set(0, "Comment", { fg = "#7C6F64", italic = false })
+
+      -- Errors
+      set(0, "Error", { fg = "#FB4934", bold = true })
+      set(0, "DiagnosticError", { fg = "#FB4934" })
+
+      -- Visual selection
+      set(0, "Visual", { bg = "#3C3836" })
     end,
   },
 
@@ -152,9 +188,16 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       gamma = 1.0,
       terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        identifiers = {},
+        functions = {},
+        variables = {},
+      },
     },
   },
 
@@ -165,8 +208,20 @@ return {
     priority = 1000,
     config = function()
       require("rose-pine").setup({
-        styles = { transparency = true },
+        styles = {
+          transparency = true,
+          italic = true,
+          bold = false,
+        },
         highlight_groups = {
+          Comment = { italic = true },
+          ["@comment"] = { italic = true },
+          Keyword = { italic = true },
+          ["@keyword"] = { italic = true },
+          Conditional = { italic = true },
+          ["@conditional"] = { italic = true },
+          Repeat = { italic = true },
+          ["@repeat"] = { italic = true },
           TelescopeBorder = { fg = "highlight_high", bg = "none" },
           TelescopeNormal = { bg = "none" },
           TelescopePromptNormal = { bg = "base" },
@@ -186,11 +241,11 @@ return {
     config = function()
       require("onedark").setup({
         style = "darker",
-        transparent = true,
-        term_colors = true,
+        transparent = false,
+        terminal_colors = true,
         code_style = {
           comments = "italic",
-          keywords = "none",
+          keywords = "italic",
           functions = "none",
           strings = "none",
           variables = "none",
@@ -205,21 +260,20 @@ return {
     priority = 1000,
     config = function()
       require("solarized-osaka").setup({
-        transparent = true, -- Enable this to disable setting the background color
-        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+        transparent = true,
+        terminal_colors = true,
         styles = {
           comments = { italic = true },
           keywords = { italic = true },
           functions = {},
           variables = {},
-          -- Background styles. Can be "dark", "transparent" or "normal"
-          sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          sidebars = "dark",
+          floats = "dark",
         },
         sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-        day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        day_brightness = 0.4, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-        dim_inactive = false, -- dims inactive windows
+        dim_inactive = true, -- dims inactive windows
         lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
         on_colors = function(colors) end,
